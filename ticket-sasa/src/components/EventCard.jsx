@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { getDefaultImage } from "../assets/categoryImages.js";
 
 const CATEGORY_COLORS = {
   Music: "#7C3AED",
@@ -26,7 +25,8 @@ export default function EventCard({ event }) {
       <div
         className="event-card__image"
         style={{
-          backgroundImage: `url(${event.image_url || getDefaultImage(event.category)})`,
+          backgroundImage: event.image_url ? `url(${event.image_url})` : undefined,
+          backgroundColor: event.image_url ? undefined : color,
         }}
       >
         <span className="event-card__date">{formatDate(event.event_date)}</span>
